@@ -40,27 +40,50 @@ Built with React and powered by TMDB API integration (with local mock fallbacks)
 
 ---
 
+
 ## 📸 Visual Interface Gallery
 
-### 1. Editorial Homepage & Trending Grids
-![Homepage / Trending View Mockup](public/screenshots/homepage_trending.png)
+### A. Design Concept Mockups
+
+1. **Editorial Homepage & Trending View**
+   ![Homepage / Trending View Mockup](public/screenshots/homepage_trending.png)
+
+2. **Explore Archive & Advanced Multi-Filter Drawer**
+   ![Explore View Mockup](public/screenshots/explore_filters.png)
+
+3. **TV Shows V2 Announcement Billboard**
+   ![TV Shows Billboard Mockup](public/screenshots/tv_shows_billboard.png)
+
+4. **Wishlist Empty State Screen**
+   ![Wishlist Empty State Mockup](public/screenshots/wishlist_empty.png)
 
 ---
 
-### 2. Explore Archive & Advanced Multi-Filter Drawer
-![Explore View Mockup](public/screenshots/explore_filters.png)
+### B. Live Webpage Screenshots
+
+1. **Homepage (Upper Fold) — Hero Billboard**
+   ![Homepage Upper Fold Screenshot](public/screenshots/homepage_upper.png)
+
+2. **Trending Movies Grid (Lower Fold) — Grayscale-to-Color Movie Cards**
+   ![Trending Movies Grid Screenshot](public/screenshots/homepage_lower.png)
+
+3. **Explore Archive & Filter Controls Drawer**
+   ![Explore View Filters Preview](public/screenshots/filters_preview.png)
+
+4. **Detailed Movie View — Backdrop, Synopsis, YouTube Trailer & OTT Providers**
+   ![Detailed Movie View Screenshot](public/screenshots/movie_details_page.png)
+
+5. **TV Shows V2 Coming Soon Teaser Billboard**
+   ![TV Shows Coming Soon Screenshot](public/screenshots/tv_shows_page.png)
+
+6. **My List / Watchlist Screen (with Saved Movies)**
+   ![Wishlist with Movies Screenshot](public/screenshots/wishlist_page.png)
+
+7. **System Settings Dashboard — Base Themes, Accent Color Palettes & Opacity Sliders**
+   ![System Settings Screenshot](public/screenshots/settings_page.png)
 
 ---
 
-### 3. TV Shows V2 Announcement Billboard
-![TV Shows Billboard Mockup](public/screenshots/tv_shows_billboard.png)
-
----
-
-### 4. Wishlist Empty State Screen
-![Wishlist Empty State Mockup](public/screenshots/wishlist_empty.png)
-
----
 
 ## 📂 Project Directory Structure
 
