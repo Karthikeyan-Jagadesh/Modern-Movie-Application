@@ -16,7 +16,7 @@ version     : 1.0.0
 ---
 ## system.overview
 ~~~
-MoviSphere solves a simple problem — bland, generic
+MoviSphere solves a simple problem : bland, generic
 streaming layouts. Users browse trending and recommended
 films through a high-impact Neo-Brutalist interface, swap
 between four accent color schemes, filter by genre, year,
@@ -25,15 +25,12 @@ TMDB API with a complete offline mock-data fallback.
 ~~~
 ---
 ## system.visuals
-~~~
+
 ### homepage (upper section)
 ![homepage (upper section)](public/screenshots/homepage_upper.png)
 ---
 ### homepage (lower section)
 ![homepage (lower section)](public/screenshots/homepage_lower.png)
----
-### homepage trending feed
-![homepage trending feed](public/screenshots/homepage_trending.png)
 ---
 ### advanced multi-filter drawer
 ![advanced multi-filter drawer](public/screenshots/filters_preview.png)
@@ -41,15 +38,15 @@ TMDB API with a complete offline mock-data fallback.
 ### movie details page
 ![movie details page](public/screenshots/movie_details_page.png)
 ---
-### settings page
-![settings page](public/screenshots/settings_page.png)
----
 ### tv shows page
 ![tv shows page](public/screenshots/tv_shows_page.png)
 ---
 ### wishlist page
 ![wishlist page](public/screenshots/wishlist_page.png)
-~~~
+---
+### settings page
+![settings page](public/screenshots/settings_page.png)
+
 ---
 ## modules
 ### theme.module
