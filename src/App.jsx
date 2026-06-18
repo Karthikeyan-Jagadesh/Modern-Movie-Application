@@ -2,6 +2,7 @@ import React from 'react';
 import { MovieProvider, useMovies } from './context/MovieContext';
 import LeftRail from './components/LeftRail';
 import TopBar from './components/TopBar';
+import { Analytics } from '@vercel/analytics/react';
 import HomeView from './views/HomeView';
 import MovieDetailView from './views/MovieDetailView';
 import WishlistView from './views/WishlistView';
@@ -65,6 +66,7 @@ export default function App() {
   return (
     <MovieProvider>
       <AppContent />
+      <Analytics />
     </MovieProvider>
   );
 }
