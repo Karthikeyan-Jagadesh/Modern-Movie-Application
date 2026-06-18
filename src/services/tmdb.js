@@ -291,25 +291,53 @@ export async function getMovieWatchProviders(movieId, country = 'US') {
   }
 }
 
-// 7. Get Movie Credits (Cast)
+// 7. Get Movie Credits (Cast and Key Crew)
 export async function getMovieCredits(movieId) {
   if (isUsingMock()) {
     const movie = MOCK_MOVIES.find(m => m.id === parseInt(movieId, 10));
-    return movie ? movie.cast : [];
+    return {
+      cast: movie ? movie.cast : [],
+      crew: {
+        directors: movie && movie.id === 948713 ? 'Denis Villeneuve' : (movie && movie.id === 872585 ? 'Christopher Nolan' : 'Unknown Director'),
+        writers: movie && movie.id === 948713 ? 'Jon Spaihts, Denis Villeneuve' : (movie && movie.id === 872585 ? 'Christopher Nolan' : 'Unknown Writer')
+      }
+    };
   }
 
   try {
     const data = await tmdbFetch(`/movie/${movieId}/credits`);
-    return data.cast.slice(0, 10).map(c => ({
+    const cast = data.cast.slice(0, 10).map(c => ({
       id: c.id,
       name: c.name,
       character: c.character,
       profile_path: c.profile_path ? `${IMAGE_BASE_URL}/w185${c.profile_path}` : 'https://via.placeholder.com/185x278?text=No+Photo',
     }));
+
+    // Extract directors and key writers
+    const directorsList = data.crew.filter(c => c.job === 'Director').map(c => c.name);
+    const writersList = data.crew.filter(c => c.job === 'Writer' || c.job === 'Screenplay' || c.job === 'Writer (Book)').map(c => c.name);
+    
+    // Remove duplicates
+    const uniqueDirectors = [...new Set(directorsList)].join(', ');
+    const uniqueWriters = [...new Set(writersList)].join(', ');
+
+    return {
+      cast,
+      crew: {
+        directors: uniqueDirectors || 'N/A',
+        writers: uniqueWriters || 'N/A'
+      }
+    };
   } catch (error) {
     console.error(`Failed to fetch credits for ${movieId}:`, error);
     const movie = MOCK_MOVIES.find(m => m.id === parseInt(movieId, 10));
-    return movie ? movie.cast : [];
+    return {
+      cast: movie ? movie.cast : [],
+      crew: {
+        directors: 'N/A',
+        writers: 'N/A'
+      }
+    };
   }
 }
 

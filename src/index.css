@@ -1839,6 +1839,76 @@ body[data-accent="monochrome"] {
   --accent-yellow: #ffffff;
 }
 
+/* Movie details title row */
+.movie-detail-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Genres flex layout */
+.detail-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+/* Blurred backdrop image background */
+.movie-backdrop-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(12px) brightness(0.2);
+  opacity: 0.35;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Crew section */
+.detail-crew-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1.2rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: var(--border-thin);
+  margin-top: 1rem;
+}
+
+.crew-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.crew-role {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.crew-names {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--bg-inverted);
+}
+
+/* Recommendations grid */
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
 /* ==========================================================================
    ADDITIONAL MOBILE RESPONSIVE MEDIA QUERIES
    ========================================================================== */
@@ -1894,6 +1964,15 @@ body[data-accent="monochrome"] {
   .video-player-container {
     width: 100% !important;
     min-width: 0 !important;
+  }
+  .detail-crew-section {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 1rem !important;
+  }
+  .recommendations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)) !important;
+    gap: 1rem !important;
   }
 }
 

@@ -28,11 +28,22 @@ export default function MovieDetailView() {
   const [movie, setMovie] = useState(null);
   const [videos, setVideos] = useState([]);
   const [cast, setCast] = useState([]);
+  const [crew, setCrew] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   const isFav = movie ? isInWishlist(movie.id) : false;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 968);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const fetchAllDetails = async () => {
@@ -49,7 +60,8 @@ export default function MovieDetailView() {
 
         setMovie(movieData);
         setVideos(videoData);
-        setCast(creditData);
+        setCast(creditData.cast);
+        setCrew(creditData.crew);
         setRecommendations(recData);
         setReviews(reviewData);
       } catch (error) {
@@ -100,7 +112,7 @@ export default function MovieDetailView() {
               alt={movie.title} 
               className="movie-detail-poster"
             />
-            <Sidebar movieId={movie.id} videos={videos} />
+            {!isMobile && <Sidebar movieId={movie.id} videos={videos} />}
           </div>
         </div>
 
@@ -167,11 +179,32 @@ export default function MovieDetailView() {
             <p className="detail-overview">{movie.overview}</p>
           </div>
 
+          {/* Key Crew info */}
+          {crew && (crew.directors !== 'N/A' || crew.writers !== 'N/A') && (
+            <div className="detail-crew-section">
+              {crew.directors && crew.directors !== 'N/A' && (
+                <div className="crew-item">
+                  <span className="crew-role">Director</span>
+                  <span className="crew-names">{crew.directors}</span>
+                </div>
+              )}
+              {crew.writers && crew.writers !== 'N/A' && (
+                <div className="crew-item">
+                  <span className="crew-role">Writer</span>
+                  <span className="crew-names">{crew.writers}</span>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Cast Members Section */}
           <div>
             <h3 className="detail-section-title">Top Billed Cast</h3>
             <CastList cast={cast} />
           </div>
+
+          {/* Sidebar rendered here on Mobile (Trailer & OTT) */}
+          {isMobile && <Sidebar movieId={movie.id} videos={videos} />}
 
           {/* Reviews Section */}
           {reviews.length > 0 && (
@@ -208,13 +241,7 @@ export default function MovieDetailView() {
                 <Sparkles size={18} />
                 <span>People Also Liked</span>
               </h3>
-              <div 
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))',
-                  gap: '1.5rem'
-                }}
-              >
+              <div className="recommendations-grid">
                 {recommendations.slice(0, 4).map(rec => (
                   <MovieCard key={rec.id} movie={rec} />
                 ))}
