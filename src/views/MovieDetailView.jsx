@@ -94,7 +94,7 @@ export default function MovieDetailView() {
       <div className="detail-content-wrapper">
         {/* Left Column: Poster + Sidebar (Trailer & OTT) */}
         <div className="movie-poster-column">
-          <div style={{ width: '100%', maxWidth: '320px' }}>
+          <div className="movie-poster-card-wrapper">
             <img 
               src={movie.poster_path} 
               alt={movie.title} 

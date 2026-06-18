@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useMovies } from '../context/MovieContext';
+import { Menu, X } from 'lucide-react';
 
 export default function LeftRail() {
   const { 
@@ -11,7 +12,10 @@ export default function LeftRail() {
     viewMode 
   } = useMovies();
 
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const handleLinkClick = (link) => {
+    setMobileOpen(false);
     if (link.view === 'home') {
       if (link.mode === 'explore') {
         setShowFiltersDrawer(true);
@@ -26,6 +30,7 @@ export default function LeftRail() {
   };
 
   const handleFiltersClick = () => {
+    setMobileOpen(false);
     changeView('home', null, 'explore');
     setShowFiltersDrawer(!showFiltersDrawer);
   };
@@ -44,39 +49,54 @@ export default function LeftRail() {
   ];
 
   return (
-    <aside className="left-navigation-rail">
-      <div className="nav-rail-logo" onClick={() => handleLinkClick({ view: 'home', mode: 'trending' })}>
-        MOVISPHERE
+    <>
+      {/* Mobile Sticky Navbar Header */}
+      <div className="mobile-header-bar">
+        <div className="mobile-header-logo" onClick={() => handleLinkClick({ view: 'home', mode: 'trending' })}>
+          MOVISPHERE
+        </div>
+        <button className="mobile-hamburger-btn" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
+          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
 
-      <nav className="nav-rail-links">
-        {navLinks.map((link, idx) => {
-          let isActive = false;
-          if (link.view === 'home') {
-            isActive = (activeView === 'home' && viewMode === link.mode);
-          } else {
-            isActive = (activeView === link.view);
-          }
-          
-          return (
-            <div 
-              key={idx}
-              className={`nav-rail-item ${isActive ? 'active' : ''}`}
-              onClick={() => handleLinkClick(link)}
-            >
-              <span>{link.label}</span>
-              {isActive && <span className="nav-rail-active-dot">▪</span>}
-            </div>
-          );
-        })}
-      </nav>
+      {/* Backdrop for closing mobile rail when clicked outside */}
+      {mobileOpen && <div className="mobile-rail-backdrop" onClick={() => setMobileOpen(false)} />}
 
-      {/* Embedded Filter Trigger Block in Rail */}
-      <div className="nav-rail-filters-trigger" onClick={handleFiltersClick}>
-        <span>FILTERS</span>
-        <span className="plus-sign">{showFiltersDrawer ? '−' : '+'}</span>
-      </div>
-    </aside>
+      <aside className={`left-navigation-rail ${mobileOpen ? 'mobile-open' : ''}`}>
+        <div className="nav-rail-logo" onClick={() => handleLinkClick({ view: 'home', mode: 'trending' })}>
+          MOVISPHERE
+        </div>
+
+        <nav className="nav-rail-links">
+          {navLinks.map((link, idx) => {
+            let isActive = false;
+            if (link.view === 'home') {
+              isActive = (activeView === 'home' && viewMode === link.mode);
+            } else {
+              isActive = (activeView === link.view);
+            }
+            
+            return (
+              <div 
+                key={idx}
+                className={`nav-rail-item ${isActive ? 'active' : ''}`}
+                onClick={() => handleLinkClick(link)}
+              >
+                <span>{link.label}</span>
+                {isActive && <span className="nav-rail-active-dot">▪</span>}
+              </div>
+            );
+          })}
+        </nav>
+
+        {/* Embedded Filter Trigger Block in Rail */}
+        <div className="nav-rail-filters-trigger" onClick={handleFiltersClick}>
+          <span>FILTERS</span>
+          <span className="plus-sign">{showFiltersDrawer ? '−' : '+'}</span>
+        </div>
+      </aside>
+    </>
   );
 }
 
