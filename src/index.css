@@ -1858,6 +1858,43 @@ body[data-accent="monochrome"] {
     width: 100% !important;
     justify-content: space-between !important;
   }
+
+  /* Movie Details View Mobile Responsiveness */
+  .detail-view-container {
+    padding: 1.5rem 1rem !important;
+  }
+  .detail-content-wrapper {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 0 !important;
+  }
+  .movie-poster-column {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .movie-poster-card-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+  .movie-detail-poster {
+    max-width: 300px !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+  .sidebar-panel {
+    padding: 1.2rem !important;
+    margin-top: 1.5rem !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .video-player-container {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
 }
 
 @media (max-width: 580px) {
@@ -1880,6 +1917,11 @@ body[data-accent="monochrome"] {
   .main-content {
     padding: 1.5rem !important;
     padding-bottom: 8rem !important;
+  }
+
+  /* Scale down huge title sizes on tiny mobile screens */
+  .movie-detail-title {
+    font-size: 2rem !important;
   }
 }
 
