@@ -1,157 +1,179 @@
-# MoviSphere — Industrial Cyber-Pulp Edition
-
-**MoviSphere** is a bold, editorial-grade digital movie discovery and tracking experience. Rejecting standard streaming layouts, the platform completely reimagines modern information architecture through a high-impact **Neo-Brutalist / Swiss Graphic Design** aesthetic. 
-
-Built with React and powered by TMDB API integration (with local mock fallbacks), MoviSphere features rigid grid layouts, absolute sharp edges, paper-concrete textures, and heavy typography.
-
----
-
-## 🚀 Tech Stack
-
-- **Core Framework**: React 19 (Functional Components, Hooks, Context API)
-- **Bundler & Dev Server**: Vite (Fast HMR, Rolldown)
-- **Styling**: Pure Vanilla CSS (custom themes, step-based mechanical transitions, variable-based theme engine)
-- **Iconography**: Lucide React
-- **API Integration**: TMDB (The Movie Database) REST API with custom fetch handler & offline mock data fallbacks
+# MoviSphere | An Movie Discovery Experience
+A React + Vite web application that reimagines movie browsing ,
+explore trending titles, switch between bold accent themes, and
+track films to a wishlist.
 
 ---
-
-## ✨ Key Features
-
-- **Cyber-Pulp & Swiss Aesthetic**: Rigid 2px white borders on dark backgrounds, zero rounded corners (`border-radius: 0`), and dynamic concrete noise grain overlays.
-- **Dynamic Accent Color Schemes**: Real-time theme switching on the fly:
-  - **Cyber-Pulp** (Default): Safety Orange highlights & Toxic Cyan tags.
-  - **Retro-Swiss**: Neon Fuchsia highlights & Yves Klein Cobalt Blue tags.
-  - **Toxic Terminal**: Acid Lime highlights & Toxic Cyan tags.
-  - **Monochrome**: High-contrast Pure White & Black plates.
-- **Advanced Preference Customization**:
-  - **Concrete Opacity Slider**: Adjusts visual noise overlay density (`0%` to `20%`) by modifying `--noise-opacity` CSS variables dynamically.
-  - **Visual Theme toggles**: Light Brutalist vs Dark Cyber-Pulp base theme.
-  - **Watch Region Selectors**: Localizes trending databases (GLOBAL, US, IN, UK).
-  - **Wishlist Wipes**: Instantly resets the saved wishlist database.
-- **Grayscale-to-Color Card Hovers**: Snippy mechanical transitions that swap card images from black-and-white to full color, outline borders in brand accents, and slide a thick, offset drop shadow behind containers.
-- **Fixed Filters Drawer**: A sticky bottom filter drawer accessible from any view allowing multi-filter intersections (genres, release year, minimum rating scores).
-- **Comprehensive Movie Details**:
-  - Blurred movie backdrop headers.
-  - Interactive **YouTube Trailer** player.
-  - Localized **Streaming Watch Providers (OTT)** indicators.
-  - Cast biography modal popup panels.
-  - Direct recommendations grid ("People Also Liked").
-
+## system.identity
+~~~
+name        : movisphere
+type        : front-end web application
+architecture: component-based (React + Context API)
+runtime     : Node.js 18+
+status      : active
+version     : 1.0.0
+~~~
 ---
-
-
-## 📸 Visual Interface Gallery
-
-### A. Design Concept Mockups
-
-1. **Editorial Homepage & Trending View**
-   ![Homepage / Trending View Mockup](public/screenshots/homepage_trending.png)
-
-2. **Explore Archive & Advanced Multi-Filter Drawer**
-   ![Explore View Mockup](public/screenshots/explore_filters.png)
-
-3. **TV Shows V2 Announcement Billboard**
-   ![TV Shows Billboard Mockup](public/screenshots/tv_shows_billboard.png)
-
-4. **Wishlist Empty State Screen**
-   ![Wishlist Empty State Mockup](public/screenshots/wishlist_empty.png)
-
+## system.overview
+~~~
+MoviSphere solves a simple problem — bland, generic
+streaming layouts. Users browse trending and recommended
+films through a high-impact Neo-Brutalist interface, swap
+between four accent color schemes, filter by genre, year,
+and rating, and save favorites to a wishlist. Built on the
+TMDB API with a complete offline mock-data fallback.
+~~~
 ---
-
-### B. Live Webpage Screenshots
-
-1. **Homepage (Upper Fold) — Hero Billboard**
-   ![Homepage Upper Fold Screenshot](public/screenshots/homepage_upper.png)
-
-2. **Trending Movies Grid (Lower Fold) — Grayscale-to-Color Movie Cards**
-   ![Trending Movies Grid Screenshot](public/screenshots/homepage_lower.png)
-
-3. **Explore Archive & Filter Controls Drawer**
-   ![Explore View Filters Preview](public/screenshots/filters_preview.png)
-
-4. **Detailed Movie View — Backdrop, Synopsis, YouTube Trailer & OTT Providers**
-   ![Detailed Movie View Screenshot](public/screenshots/movie_details_page.png)
-
-5. **TV Shows V2 Coming Soon Teaser Billboard**
-   ![TV Shows Coming Soon Screenshot](public/screenshots/tv_shows_page.png)
-
-6. **My List / Watchlist Screen (with Saved Movies)**
-   ![Wishlist with Movies Screenshot](public/screenshots/wishlist_page.png)
-
-7. **System Settings Dashboard — Base Themes, Accent Color Palettes & Opacity Sliders**
-   ![System Settings Screenshot](public/screenshots/settings_page.png)
-
+## system.visuals
+~~~
+### homepage (upper section)
+![homepage (upper section)](public/screenshots/homepage_upper.png)
 ---
-
-
-## 📂 Project Directory Structure
-
-```
-├── .env.example              # Template for API credentials
-├── .gitignore                # Excludes node_modules and private .env files
-├── eslint.config.js          # Linter configuration
-├── index.html                # Main HTML entrypoint
-├── package.json              # Script definitions and project dependencies
-├── public/                   # Static resources
-│   ├── favicon.svg           # Custom brutalist page favicon
-│   └── icons.svg             # Page asset symbols
-├── src/                      # Source Code
-│   ├── main.jsx              # React mounting root
-│   ├── App.jsx               # Router dispatcher and layout shell
-│   ├── index.css             # Unified CSS tokens, typography, and themes
-│   ├── assets/               # Brand logo files and background placeholders
-│   ├── context/
-│   │   └── MovieContext.jsx  # Global state manager (routing, wishlist, filters, accents)
-│   ├── services/
-│   │   ├── tmdb.js           # API fetch logic and fallback client
-│   │   └── mockData.js       # Complete offline datasets (movies, reviews, watch providers)
-│   ├── components/
-│   │   ├── Backdrop.jsx      # Detail page header visual
-│   │   ├── CastList.jsx      # Billed cast profiles list and biography popup modals
-│   │   ├── FilterBar.jsx     # Selectors for advanced query filters
-│   │   ├── LeftRail.jsx      # Left sidebar navigation links and drawer controls
-│   │   ├── MovieCard.jsx     # Core grid card featuring rank indices and hover outlines
-│   │   ├── Sidebar.jsx       # Detail view player wrapper and streaming availability slots
-│   │   └── TopBar.jsx        # Top global search bar and wishlist buttons
-│   └── views/
-│       ├── HomeView.jsx      # Homepage rendering trending feeds and hero slides
-│       ├── MovieDetailView.jsx# Detailed review summaries, recommendations, and bios
-│       ├── WishlistView.jsx  # wishlist view page with customized empty illustrations
-│       ├── TvShowsView.jsx   # Teaser billboard for upcoming Version 2 features
-│       └── SettingsView.jsx  # Custom dashboard panel for live configurations
-└── vite.config.js            # Bundler configurations
-```
-
+### homepage (lower section)
+![homepage (lower section)](public/screenshots/homepage_lower.png)
 ---
-
-## ⚙️ Setup & Installation
-
-### 1. Clone the repository
-```bash
+### homepage trending feed
+![homepage trending feed](public/screenshots/homepage_trending.png)
+---
+### advanced multi-filter drawer
+![advanced multi-filter drawer](public/screenshots/filters_preview.png)
+---
+### movie details page
+![movie details page](public/screenshots/movie_details_page.png)
+---
+### settings page
+![settings page](public/screenshots/settings_page.png)
+---
+### tv shows page
+![tv shows page](public/screenshots/tv_shows_page.png)
+---
+### wishlist page
+![wishlist page](public/screenshots/wishlist_page.png)
+~~~
+---
+## modules
+### theme.module
+~~~
+- four dynamic accent color schemes: Cyber-Pulp, Retro-Swiss, Toxic Terminal, Monochrome
+- light brutalist vs dark cyber-pulp base theme toggle
+- concrete noise opacity slider (0% to 20%) via CSS variables
+~~~
+### discovery.module
+~~~
+- trending feed and hero slides on the homepage
+- grayscale-to-color card hover transitions with offset shadows
+- sticky bottom filters drawer (genre, release year, minimum rating)
+- watch region selector (GLOBAL, US, IN, UK)
+~~~
+### detail.module
+~~~
+- blurred movie backdrop headers
+- interactive YouTube trailer player
+- localized streaming watch provider (OTT) indicators
+- cast biography modal popups
+- "people also liked" recommendations grid
+~~~
+### wishlist.module
+~~~
+- add or remove movies from a personal wishlist
+- dedicated wishlist view with custom empty-state illustration
+- one-click wishlist wipe
+~~~
+### data.module
+~~~
+- TMDB REST API integration via a custom fetch handler
+- automatic mock mode using offline datasets when no API key is set
+- complete fallback datasets for movies, reviews, and watch providers
+~~~
+---
+## tech.stack
+~~~
+core        : React 19 (Functional Components, Hooks, Context API)
+bundler     : Vite (Fast HMR, Rolldown)
+styling     : Vanilla CSS (variable-based theme engine)
+icons       : Lucide React
+api         : TMDB (The Movie Database) REST API
+~~~
+---
+## project.structure
+~~~
+src/
+├── main.jsx                  
+├── App.jsx                    
+├── index.css                   
+├── assets/                     
+├── context/
+│   └── MovieContext.jsx         
+├── services/
+│   ├── tmdb.js                   
+│   └── mockData.js                
+├── components/
+│   ├── Backdrop.jsx
+│   ├── CastList.jsx
+│   ├── FilterBar.jsx
+│   ├── LeftRail.jsx
+│   ├── MovieCard.jsx
+│   ├── Sidebar.jsx
+│   └── TopBar.jsx
+└── views/
+    ├── HomeView.jsx
+    ├── MovieDetailView.jsx
+    ├── WishlistView.jsx
+    ├── TvShowsView.jsx
+    └── SettingsView.jsx
+~~~
+---
+## execution
+~~~
 git clone https://github.com/Karthikeyan-Jagadesh/Modern-Movie-Application.git
 cd Modern-Movie-Application
-```
-
-### 2. Install dependencies
-```bash
 npm install
-```
-
-### 3. Add API credentials
-Create a `.env` file in the root directory and add your TMDB API Key:
-```env
+~~~
+~~~
+create a .env file in the root directory:
 VITE_TMDB_API_KEY=your_tmdb_api_key_here
-```
-*If no API key is provided, the application will automatically enter **Mock Mode** using the extensive datasets in `mockData.js` to ensure the application remains fully functional.*
-
-### 4. Run the development server
-```bash
+(no key? the app auto-switches to Mock Mode using mockData.js)
+~~~
+~~~
 npm run dev
-```
-
-### 5. Compile for production
-```bash
-npm run build
-```
-The optimized production bundle will be created inside the `dist/` directory.
+~~~
+~~~
+open     → http://localhost:5173
+build    → npm run build → output in dist/
+~~~
+---
+## usage.flow
+~~~
+1. open the app — trending and recommended movies load on the homepage
+2. pick an accent theme and adjust noise opacity from settings
+3. use the bottom filters drawer to narrow by genre, year, or rating
+4. click a movie card to view backdrop, trailer, cast, and OTT availability
+5. add titles to your wishlist for later
+6. switch watch region anytime to localize streaming availability
+~~~
+---
+## system.notes
+~~~
+- without a TMDB API key, the app runs fully offline in Mock Mode
+- internet access required for live TMDB data and YouTube trailers
+- theme, noise, and region preferences apply instantly via CSS variables
+- TV Shows view is a placeholder teaser for a planned Version 2
+~~~
+---
+## current.state
+~~~
+- homepage trending feed and hero slides operational
+- theme switching and noise opacity slider working
+- filters drawer and watch region selector functional
+- movie detail view (trailer, cast, OTT, recommendations) complete
+- wishlist add/remove/wipe fully functional
+~~~
+---
+## pending.upgrades
+~~~
+- TV Shows section (Version 2)
+- expanded recommendation engine
+- user accounts and synced wishlists
+- mobile-first layout refinements
+~~~
+---
