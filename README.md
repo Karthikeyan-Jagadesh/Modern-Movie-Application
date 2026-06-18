@@ -40,6 +40,28 @@ Built with React and powered by TMDB API integration (with local mock fallbacks)
 
 ---
 
+## 📸 Visual Interface Gallery
+
+### 1. Editorial Homepage & Trending Grids
+![Homepage / Trending View Mockup](public/screenshots/homepage_trending.png)
+
+---
+
+### 2. Explore Archive & Advanced Multi-Filter Drawer
+![Explore View Mockup](public/screenshots/explore_filters.png)
+
+---
+
+### 3. TV Shows V2 Announcement Billboard
+![TV Shows Billboard Mockup](public/screenshots/tv_shows_billboard.png)
+
+---
+
+### 4. Wishlist Empty State Screen
+![Wishlist Empty State Mockup](public/screenshots/wishlist_empty.png)
+
+---
+
 ## 📂 Project Directory Structure
 
 ```
