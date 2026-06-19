@@ -267,6 +267,7 @@ h1, h2, h3, h4, h5, h6 {
   .main-viewport-wrapper {
     margin-left: 0 !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
 
   .app-container {
@@ -1759,6 +1760,9 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.95rem;
   border: var(--border-thick);
   width: fit-content;
+  max-width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .api-status-badge.live {
@@ -2027,6 +2031,23 @@ body[data-accent="monochrome"] {
   /* Scale down huge title sizes on tiny mobile screens */
   .movie-detail-title {
     font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .settings-view-container {
+    padding: 1.5rem !important;
+  }
+  .settings-card {
+    padding: 1.2rem !important;
+  }
+  .bottom-drawer-header {
+    padding: 1rem !important;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .bottom-drawer-content {
+    padding: 1rem !important;
   }
 }
 
