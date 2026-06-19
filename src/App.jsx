@@ -55,7 +55,7 @@ function AppContent() {
         </main>
 
         <footer className="brutalist-footer">
-          <p>© {new Date().getFullYear()} MOVISPHERE. EDITORIAL MOVIE ARCHIVE. POWERED BY REACT & TMDB.</p>
+          <p>© 2026 MOVISPHERE. <a href="https://github.com/Karthikeyan-Jagadesh/Modern-Movie-Application" target="_blank" rel="noopener noreferrer">GITHUB REPOSITORY</a></p>
         </footer>
       </div>
     </div>
